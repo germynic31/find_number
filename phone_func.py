@@ -1,4 +1,5 @@
 from phonenumbers import number_type
+import csv
 
 
 def type_phone(number):
@@ -38,3 +39,12 @@ def type_phone(number):
     else:
         print("Этот номер телефона не может быть определен")
         return ''
+
+
+def check_number_in_csv(number, csv_file):
+    with open(csv_file, 'r', newline='') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            if number in row:
+                return True
+    return False
